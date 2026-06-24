@@ -1,4 +1,4 @@
-![Tests](https://github.com/ЛОГИН/РЕПО/actions/workflows/test-and-deploy.yml/badge.svg?branch=source)
+![Tests](https://github.com/FreezeG2/kt1-sum/actions/workflows/test-and-deploy.yml/badge.svg?branch=source)
 
 # Контрольная точка 1 — функция сложения
 
