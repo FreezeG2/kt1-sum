@@ -1,0 +1,35 @@
+name: Tests and deploy to main
+
+on:
+  push:
+    branches:
+      - source
+
+permissions:
+  contents: write
+
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Klonируем ветку source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Устанавливаем Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Запускаем тесты
+        run: npm test
+
+      - name: Удаляем решение и пушим в main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          rm -f src/sum.js
+          git add -A
+          git commit -m "Deploy to main without solution [skip ci]"
+          git push --force origin HEAD:main
